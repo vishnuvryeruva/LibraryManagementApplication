@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Login and Registration Form</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+	<div class="wrapper">
+		<div class="title-text">
+			<div class="title login">Login Form</div>
+		</div>
+		<div class="form-container">
+			<div class="form-inner">
+				<form action="#" th:action="@{/loginuser}" method="POST">
+					<div class="field">
+						<input type="text" placeholder="UserName" required id="userName" name="userName" >
+					</div>
+					<div class="field">
+						<input type="password" placeholder="Password" required id="password" name="password">
+					</div>
+
+					<div class="field btn">
+						<div class="btn-layer"></div>
+						<input type="submit" value="Login">
+					</div>
+				</form>
+			</div>
+			<br>
+			<div class="form-inner">
+				<form action="" th:action="@{/githublogin}" method="POST">
+					<div class="field btn">
+						<div class="btn-layer"></div>
+						<input type="submit" value="Sign in using Github">
+					</div>
+
+					<div class="signup-link">
+						New User? <a href="/register">Signup now</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>

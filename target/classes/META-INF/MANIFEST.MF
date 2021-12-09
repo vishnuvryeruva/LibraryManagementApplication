@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: himan
+Build-Jdk: 16.0.2
+Implementation-Title: spring-cloud-oauth2-example
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.libraryapplication
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/spring-cloud-oauth2-example
+Created-By: Maven Integration for Eclipse
+

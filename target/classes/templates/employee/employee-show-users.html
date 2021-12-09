@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Users</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+<body>
+	<ul th:replace="page-layout :: employeeNavBar"></ul>
+
+	 <div class="container">
+
+
+		<h3>Users</h3>
+
+		<div class="row">
+
+			<form th:action="@{/employee/users/showusers}" method="GET">
+				<div class="col-25">
+					<label for="firstName">First Name</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="firstName" name="firstName">
+				</div>
+
+				<div class="col-25">
+					<label for="lastName">Last Name</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="lastName" name="lastName">
+				</div>
+				<div>
+					<input type="submit" value="Search">
+				</div>
+			</form>
+
+			<form th:action="@{/employee/users/showusers}" method="GET">
+				<input style="margin-left: 20px" type="submit"
+					value="Show all users" name="showAllUsers">
+			</form>
+		</div>
+		<br />
+		
+		<table th:if="${usersWithFines.size() > 0}" id="tablestyle">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Phone Number</th>
+				<th>Fine</th>
+				<th style="width: 150px">Action</th>
+			</tr>
+
+			<tr th:each="user : ${usersWithFines.keySet()}">
+				<td th:text="${user.firstName}"></td>
+				<td th:text="${user.lastName}"></td>
+				<td th:text="${user.email}"></td>
+				<td th:text="${user.phoneNumber}"></td>
+				<td th:if="${usersWithFines.get(user) > 0}" style="color: red"
+					th:text="${'$ ' + usersWithFines.get(user)}"></td>
+				<td th:if="${usersWithFines.get(user) == 0}" th:text="${'$ ' + usersWithFines.get(user)}"></td>
+				<td>
+					<form th:action="@{/employee/users/showuserinfo}" method="GET">
+						<input class="table" type="submit" value="Show user info">
+						<input type="hidden" th:value="${user.userId}" name="userId">
+						<input type="hidden" th:value="${usersWithFines.get(user)}" name="fine">
+					</form>
+				</td>
+			</tr>
+
+		</table>
+
+	</div>
+</body>
+</html>

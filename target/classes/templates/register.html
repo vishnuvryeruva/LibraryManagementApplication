@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}">
+</head>
+<body>
+
+	<div class="wrapper">
+
+
+		<div class="title-text">
+			<div class="title signup">Signup Form</div>
+		</div>
+		<div class="form-container">
+			<div class="form-inner">
+				<form class="signup" th:action="@{/registernewuser}" method="POST" th:object="${newUser}">
+					
+					<div class="field">
+						<input type="text" placeholder="User Name" required th:field="${newUser.userName}">
+					</div>
+					<div class="field">
+						<input type="password" placeholder="Password" required th:field="${newUser.password}">
+					</div>
+					<div class="field">
+						<input type="text" placeholder="Email Address" required th:field="${newUser.email}">
+					</div>
+					<div class="field">
+						<input type="text" placeholder="First Name" required th:field="${newUser.firstName}">
+					</div>
+					<div class="field">
+						<input type="text" placeholder="Last Name" required th:field="${newUser.lastName}">
+					</div>
+					<div class="field">
+						<input type="text" placeholder="Address" required th:field="${newUser.address}">
+					</div>
+					<div class="field">
+						<input type="text" placeholder="Phone Number" required th:field="${newUser.phoneNumber}">
+					</div>
+					
+					
+					<div class="field btn">
+						<div class="btn-layer"></div>
+						<input type="submit" value="Signup">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
