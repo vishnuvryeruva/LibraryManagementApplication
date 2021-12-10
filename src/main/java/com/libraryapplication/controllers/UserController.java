@@ -48,23 +48,9 @@ public class UserController {
 	
 	private int maximumWeeksToExtend = 3;
 	
-
-	@PostMapping(value="/register/save")
-	public String saveNewAccount(User account) {
-		User user = userService.findById(account.getUserId());
-		user.setAddress(account.getAddress());
-		user.setCity(account.getCity());
-		user.setUserName(account.getUserName());
-		user.setFirstName(account.getFirstName());
-		user.setLastName(account.getLastName());
-		user.setPhoneNumber(account.getPhoneNumber());
-		user.setEmail(account.getEmail());
-		user.setPassword(account.getPassword());
-		
-		
-		userService.save(user);
-		return "redirect:/githublogin";
-	}
+	
+	
+	
 
 	@GetMapping()
 	public String userHome(Model model) {

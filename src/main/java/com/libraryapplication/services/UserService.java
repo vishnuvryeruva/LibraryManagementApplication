@@ -21,6 +21,7 @@ public class UserService {
 
 	public User getCurrentUser() {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		System.out.println(username);
 		return findByUserName(username);
 	}
 	
@@ -51,6 +52,7 @@ public class UserService {
 	}
 	
 	public void save(User user) {
+		System.out.println("USER NAME :: "+user.getUserName());
 		userRepository.save(user);
 	}
 	
