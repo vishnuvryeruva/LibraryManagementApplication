@@ -54,7 +54,7 @@ public class LoginController {
 	
 	@RequestMapping("/")
 	public String newUser(Model model) {
-		return "templates/login.html";	
+		return "/login.html";	
 	}
 	
 	@RequestMapping("/login")
