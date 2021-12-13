@@ -1,4 +1,4 @@
-# Term project for CMPE-272 (Enterprise Software Platforms)
+# Term project for CMPE-272 (Enterprise Software Platforms
 ## Library Management System
 # - By Team Dragonite
 ### Khushil Modi (SJSU ID: 015923115)
