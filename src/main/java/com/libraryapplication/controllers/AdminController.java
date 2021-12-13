@@ -21,6 +21,15 @@ public class AdminController {
 	@Autowired
 	UserService userService;
 	
+	
+	@GetMapping
+	public String adminHome(Model model) {
+		User currentUser = userService.getCurrentUser();
+		model.addAttribute("currentUser", currentUser);
+		return "admin/admin-home.html";
+	}
+	
+	
 	@GetMapping(value="/manageaccounts")
 	public String manageAuthorities(@RequestParam (required = false) String firstName,
 									@RequestParam (required = false) String lastName,

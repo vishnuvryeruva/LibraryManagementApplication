@@ -20,6 +20,8 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
+	Boolean userNameExist=false;
+	
 	@RequestMapping("/githublogin")
 	public String githubLogin(Model model) {
 		User currentUser = userService.getCurrentUser();
@@ -94,15 +96,29 @@ public class LoginController {
 	
 	@RequestMapping("/register")
 	public String register(Model model) {
+		
 		model.addAttribute("newUser", new User());
+		
+		model.addAttribute("userNameExist", userNameExist);
 		return "/register.html";	
 	}
 	
 	@RequestMapping("/registernewuser")
 	public String registerNewUser(User newUserAccount) {
 		
-		userService.save(newUserAccount);
-		return "/login";	
+		System.out.println("/////////////////////////////////****"+userService.findByUserName(newUserAccount.getUserName()));
+		
+		
+		if(userService.findByUserName(newUserAccount.getUserName())==null)
+		{
+			userNameExist=false;
+			userService.save(newUserAccount);
+			return "/login";	
+		}
+		else {
+			userNameExist = true;
+			return "/login";
+		}
 	}
 	
 	
@@ -130,7 +146,7 @@ public class LoginController {
 		user.setRole(account.getRole());
 		
 		userService.save(user);
-		return "redirect:/githublogin";
+		return "/githublogin";
 	}
 
 

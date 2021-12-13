@@ -49,9 +49,6 @@ public class UserController {
 	private int maximumWeeksToExtend = 3;
 	
 	
-	
-	
-
 	@GetMapping()
 	public String userHome(Model model) {
 
@@ -82,13 +79,15 @@ public class UserController {
 		int extensionsLeft = maximumWeeksToExtend - book.getTimesExtended();
 		long daysTooLate = dateTracker.daysTooLate(book.getReturnDate());
 		
+		
 		if (book.getTimesExtended() < maximumWeeksToExtend && fineAmount.compareTo(BigDecimal.valueOf(0)) == 0 && book.getReservedByUser() == null) {	
 			book.setReturnDate(book.getReturnDate().plusDays(7 * weeksToExtend));
 			book.setTimesExtended(book.getTimesExtended() + weeksToExtend);
 			bookService.save(book);	
-			return"redirect:/user/yourbooks/bookextended";
+			return "redirect:/user/yourbooks/bookextended";
 			
 		} else if (fineAmount.compareTo(BigDecimal.valueOf(0)) == 1 && daysTooLate <= (extensionsLeft * 7) && book.getReservedByUser() == null) {
+			
 			return "redirect:/user/yourbooks/payfine/" + bookId;
 		
 		} else {
@@ -99,6 +98,7 @@ public class UserController {
 	
 	@GetMapping(value="/yourbooks/payfine/{bookId}")
 	public String payFine(Model model, @PathVariable (value="bookId") Long bookId) {
+		
 		
 		Book book = bookService.findById(bookId);
 		BigDecimal fine = fineCalculator.getFineOfBook(book);	
